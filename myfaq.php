@@ -49,6 +49,7 @@ class MyFaq extends Module
     !Configuration::deleteByName('MYFAQ_NAME')
   )
     return false;
+    include(dirname(__FILE__).'/sql/uninstall.php');
 
   return true;
   }
