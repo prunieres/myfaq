@@ -4,6 +4,8 @@ if (!defined('_PS_VERSION_'))
   exit;
 }
 
+require 'models/faq.php';
+
 class MyFaq extends Module
 {
   public function __construct()
@@ -37,6 +39,9 @@ class MyFaq extends Module
       $this->registerHook('leftColumn') &&
       $this->registerHook('footer') &&
       include(dirname(__FILE__).'/sql/install.php');
+      if(! Db::getInstance()->execute($sql)){
+          return false;
+      }
       Configuration::updateValue('MYFAQ_NAME', 'question');
 
   }
@@ -50,6 +55,9 @@ class MyFaq extends Module
   )
     return false;
     include(dirname(__FILE__).'/sql/uninstall.php');
+    if(! Db::getInstance()->execute($sql)){
+        return false;
+    }
 
   return true;
   }

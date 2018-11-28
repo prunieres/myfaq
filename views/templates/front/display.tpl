@@ -6,7 +6,7 @@
     <form method="post">
         <h4>Posez votre question</h4>
         <input type="text" name="question"/>
-        <input type="submit"/>
+        <button type="submit" name="submit">Bouton</button>
     </form>
 
 {/block}
