@@ -8,5 +8,12 @@
         <input type="text" name="question"/>
         <button type="submit" name="submit">Bouton</button>
     </form>
+    <ul>
+        {foreach from =$results item=result} 
+            <li>
+                {$result.question}
+            </li>
+        {/foreach}
+    </ul>
 
 {/block}

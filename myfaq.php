@@ -35,14 +35,13 @@ class MyFaq extends Module
     if (Shop::isFeatureActive())
       Shop::setContext(Shop::CONTEXT_ALL);
 
+    include(dirname(__FILE__).'/sql/install.php');
+    if(! Db::getInstance()->execute($sql)){
+      return false;
+    }
     return parent::install() &&
       $this->registerHook('leftColumn') &&
-      $this->registerHook('footer') &&
-      include(dirname(__FILE__).'/sql/install.php');
-      if(! Db::getInstance()->execute($sql)){
-          return false;
-      }
-      Configuration::updateValue('MYFAQ_NAME', 'question');
+      $this->registerHook('footer');
 
   }
 
