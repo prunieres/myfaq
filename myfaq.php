@@ -36,7 +36,9 @@ class MyFaq extends Module
     return parent::install() &&
       $this->registerHook('leftColumn') &&
       $this->registerHook('footer') &&
+      include(dirname(__FILE__).'/sql/install.php');
       Configuration::updateValue('MYFAQ_NAME', 'question');
+
   }
 
 
